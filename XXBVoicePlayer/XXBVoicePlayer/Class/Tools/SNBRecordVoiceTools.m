@@ -60,27 +60,21 @@ return; \
     self = [super init];
     if (self) {
         //建立写入文件线程队列,串行，和一个信号量标识
-        self.writeFileQueue = dispatch_queue_create("com.molon.MLAudioRecorder.writeFileQueue", NULL);
-        
+        self.writeFileQueue = dispatch_queue_create("writeFileQueue", DISPATCH_QUEUE_SERIAL);
         self.sampleRate = SNBDefaultSampleRate;
         self.bufferDurationSeconds = SNBDefaultBufferDurationSeconds;
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionInterruption:)
-                                                     name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionInterruption:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    NSAssert(!self.isRecording, @"MLAudioRecorder dealloc之前必须停止录音");
-    
-    //由于上面做了需要在外部调用stopRecording的限制，下面这块不需要了。
-    //    if (self.isRecording){
-    //        [self stopRecording];
-    //    }
+    //    NSAssert(!self.isRecording, @"SNBRecordVoiceTools dealloc之前必须停止录音");
+    if (self.isRecording){
+        [self stopRecordVoice];
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSLog(@"MLAudioRecorder dealloc");
 }
 
 - (void)startRecordVoice
@@ -94,7 +88,6 @@ return; \
         [self postAErrorWithErrorCode:SNBAudioRecorderErrorCodeAboutSession andDescription:@"为AVAudioSession设置Category失败"];
         return;
     }
-    
     //启用audio session
     ret = [[AVAudioSession sharedInstance] setActive:YES error:&error];
     if (!ret)
@@ -102,7 +95,7 @@ return; \
         [self postAErrorWithErrorCode:SNBAudioRecorderErrorCodeAboutSession andDescription:@"Active AVAudioSession失败"];
         return;
     }
-#warning 处理文件读写
+    
     if(!self.fileWriterDelegate||![self.fileWriterDelegate respondsToSelector:@selector(createFileWithRecorder:)]||![self.fileWriterDelegate respondsToSelector:@selector(writeIntoFileWithData:withRecorder:inAQ:inStartTime:inNumPackets:inPacketDesc:)]||![self.fileWriterDelegate respondsToSelector:@selector(completeWriteWithRecorder:withIsError:)])
     {
         [self postAErrorWithErrorCode:SNBAudioRecorderErrorCodeAboutOther andDescription:@"fileWriterDelegate的代理未设置或其代理方法不完整"];
@@ -122,8 +115,6 @@ return; \
         [self setupAudioFormat:kAudioFormatLinearPCM SampleRate:self.sampleRate];
     }
     _recordFormat.mSampleRate = self.sampleRate;
-    
-    
     //建立文件,顺便同步下串行队列，防止意外前面有没处理的
     __block BOOL isContinue = YES;;
     dispatch_sync(self.writeFileQueue, ^{
@@ -139,18 +130,13 @@ return; \
     {
         return;
     }
-    
     self.semError = dispatch_semaphore_create(0);   //重新初始化信号量标识
     dispatch_semaphore_signal(self.semError);       //设置有一个信号
-    
     //设置录音的回调函数
     IfAudioQueueErrorPostAndReturn(AudioQueueNewInput(&_recordFormat, inputBufferHandler, (__bridge void *)(self), NULL, NULL, 0, &_audioQueue),@"音频输入队列初始化失败");
-    
     //计算估算的缓存区大小
     int frames = (int)ceil(self.bufferDurationSeconds * _recordFormat.mSampleRate);
     int bufferByteSize = frames * _recordFormat.mBytesPerFrame;
-    NSLog(@"缓冲区大小:%d",bufferByteSize);
-    
     //创建缓冲器
     for (int i = 0; i < SNBNumberAudioQueueBuffers; i++)
     {
@@ -383,7 +369,8 @@ void inputBufferHandler(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRe
 }
 
 #pragma mark - notification
-- (void)sessionInterruption:(NSNotification *)notification {
+- (void)sessionInterruption:(NSNotification *)notification
+{
     AVAudioSessionInterruptionType interruptionType = [[[notification userInfo] objectForKey:AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
     if (AVAudioSessionInterruptionTypeBegan == interruptionType)
     {
