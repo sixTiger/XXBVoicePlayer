@@ -20,7 +20,7 @@
  *  采样率，要转码为amr的话必须为8000
  */
 #define SNBDefaultSampleRate 8000
-#define SNBTimer
+#define SNBTime 0.1
 
 #define SNBMLAudioRecorderErrorDomain @"SNBAudioRecorderErrorDomain"
 
@@ -52,6 +52,7 @@ return; \
  */
 @property(nonatomic , strong) NSTimer               *backTimer;
 @property (nonatomic, assign) NSUInteger            channelCount;
+@property(nonatomic , assign) CGFloat               voiceLength;
 @end
 @implementation SNBRecordVoiceTools
 - (instancetype)init
@@ -160,6 +161,7 @@ return; \
     // 开始录音
     IfAudioQueueErrorPostAndReturn(AudioQueueStart(_audioQueue, NULL),@"开始音频输入队列失败");
     self.isRecording = YES;
+    self.voiceLength = 0.0;
     [self p_startTimer];
 }
 
@@ -185,7 +187,6 @@ return; \
 - (void)stopRecordVoice
 {
     [self p_stopTimer];
-    //    DLOG(@"stopRecording");
     if (self.isRecording)
     {
         self.isRecording = NO;
@@ -195,19 +196,20 @@ return; \
         [[AVAudioSession sharedInstance] setActive:NO error:nil];
         
         //这里直接做同步
-        __block BOOL isContinue = YES;
+        __block BOOL isFinish = YES;
         dispatch_sync(self.writeFileQueue, ^{
-            if (self.fileWriterDelegate&&![self.fileWriterDelegate completeWriteWithRecorder:self withIsError:NO]) {
+            if (self.fileWriterDelegate&&![self.fileWriterDelegate completeWriteWithRecorder:self withIsError:NO])
+            {
                 dispatch_async(dispatch_get_main_queue(),^{
-                    [self postAErrorWithErrorCode:SNBAudioRecorderErrorCodeAboutFile andDescription:@"为音频输入关闭文件失败"];
+                    [self postAErrorWithErrorCode:SNBAudioRecorderErrorCodeAboutFile andDescription:@"音频输入关闭文件失败"];
                 });
-                isContinue = NO;
+                isFinish = NO;
             }
         });
-        if(!isContinue) return;
-        
-        NSLog(@"录音结束");
-#warning 通知队列完成录音
+        if ([self.delegate respondsToSelector:@selector(recordVoiceToolsDidFinishRecording:successfully:)])
+        {
+            [self.delegate recordVoiceToolsDidFinishRecording:self successfully:isFinish];
+        }
     }
 }
 
@@ -219,10 +221,6 @@ return; \
 {
     [self.backTimer invalidate];
     self.backTimer = nil;
-//    if ([self.delegate respondsToSelector:@selector(recordVoiceToolsDidStopRecord:)])
-//    {
-//        [self.delegate recordVoiceToolsDidStopRecord:self];
-//    }
 }
 // 设置录音格式
 - (void)setupAudioFormat:(UInt32) inFormatID SampleRate:(NSUInteger)sampeleRate
@@ -275,6 +273,7 @@ void inputBufferHandler(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRe
             });
         }
     }
+    
     if (recorder.isRecording)
     {
         if(AudioQueueEnqueueBuffer(inAQ, inBuffer, 0, NULL)!=noErr){
@@ -314,10 +313,11 @@ void inputBufferHandler(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRe
         self.channelCount = queueFormat.mChannelsPerFrame;
         //重新初始化大小
         _levelMeterStates = (AudioQueueLevelMeterState*)realloc(_levelMeterStates, self.channelCount * sizeof(AudioQueueLevelMeterState));
-        _backTimer =  [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(p_refreshCallBack) userInfo:nil repeats:YES];
+        _backTimer =  [NSTimer scheduledTimerWithTimeInterval:SNBTime target:self selector:@selector(p_refreshCallBack) userInfo:nil repeats:YES];
     }
     return _backTimer;
 }
+
 - (void)p_refreshCallBack
 {
     
@@ -335,10 +335,6 @@ void inputBufferHandler(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRe
            @"mAveragePower":@(_levelMeterStates[i].mAveragePower),
            @"mPeakPower":@( _levelMeterStates[i].mPeakPower)
            }];
-        //        LevelMeterState *state = [[LevelMeterState alloc]init];
-        //        state.mAveragePower = _levelMeterStates[i].mAveragePower;
-        //        state.mPeakPower = _levelMeterStates[i].mPeakPower;
-        //        [meters addObject:state];
     }
     Float32 averagePowerOfChannels = 0;
     for (int i=0; i<meters.count; i++)
@@ -346,18 +342,29 @@ void inputBufferHandler(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRe
         averagePowerOfChannels += [meters[i][@"mAveragePower"] floatValue];
     }
     
-    //获取音量百分比，姑且这么叫吧
+    //获取音量百分比
     Float32 volume = pow(10, (0.05 * averagePowerOfChannels/meters.count));
-    NSLog(@"%@",@(volume));
-    
+    self.voiceLength += SNBTime;
+    if([self.delegate respondsToSelector:@selector(recordVoiceTools:voiceLengthDidChange:)])
+    {
+        [self.delegate recordVoiceTools:self voiceLengthDidChange:self.voiceLength];
+    }
+    if ([self.delegate respondsToSelector:@selector(recordVoiceTools:voicePowerDidChange:)])
+    {
+        [self.delegate recordVoiceTools:self voicePowerDidChange:volume];
+    }
 }
 
-#warning 错误的相关处理
+/**
+ *  错误的相关会掉
+ *
+ *  @param code        错误码
+ *  @param description 错误的消息
+ */
 - (void)postAErrorWithErrorCode:(SNBAudioRecorderErrorCode)code andDescription:(NSString*)description
 {
     //关闭可能还未关闭的东西,无需考虑结果
     self.isRecording = NO;
-    
     AudioQueueStop(_audioQueue, true);
     AudioQueueDispose(_audioQueue, true);
     [[AVAudioSession sharedInstance] setActive:NO error:nil];
@@ -368,19 +375,13 @@ void inputBufferHandler(void *inUserData, AudioQueueRef inAQ, AudioQueueBufferRe
             [self.fileWriterDelegate completeWriteWithRecorder:self withIsError:YES];
         });
     }
-    
-    NSLog(@"录音发生错误");
     NSError *error = [NSError errorWithDomain:SNBMLAudioRecorderErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey:description}];
-    
-    //    if (self.delegate&&[self.delegate respondsToSelector:@selector(recordError:)])
-    //    {
-    //        [self.delegate recordError:error];
-    //    }
-    //
-    //    if( self.receiveErrorBlock){
-    //        self.receiveErrorBlock(error);
-    //    }
+    if ([self.delegate respondsToSelector:@selector(recordVoiceToolsDidFailRecording:error:)])
+    {
+        [self.delegate recordVoiceToolsDidFailRecording:self error:error];
+    }
 }
+
 #pragma mark - notification
 - (void)sessionInterruption:(NSNotification *)notification {
     AVAudioSessionInterruptionType interruptionType = [[[notification userInfo] objectForKey:AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];

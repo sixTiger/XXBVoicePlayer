@@ -59,8 +59,7 @@ typedef NS_OPTIONS(NSUInteger, SNBAudioRecorderErrorCode) {
  *  录音结果的相关回调
  */
 @protocol SNBRecordVoiceToolsDelegate <NSObject>
-
-
+@optional
 /**
  *  声音的分贝
  *
@@ -75,7 +74,6 @@ typedef NS_OPTIONS(NSUInteger, SNBAudioRecorderErrorCode) {
  */
 - (void)recordVoiceTools:(SNBRecordVoiceTools *)recordVoiceTools voiceLengthDidChange:(CGFloat)voiceLength;
 
-
 /**
  *  录音完成的回调
  *
@@ -85,22 +83,15 @@ typedef NS_OPTIONS(NSUInteger, SNBAudioRecorderErrorCode) {
 
 
 /**
- *  录音错误的会掉
+ *  录音错误的回调
  *
  *  @param error            错误的原因
  */
 - (void)recordVoiceToolsDidFailRecording:(SNBRecordVoiceTools *)recordVoiceTools error:(NSError *)error;
-
-/**
- *  录音遇到了错误，例如创建文件失败啊。写入失败啊。关闭文件失败啊，等等。
- */
-- (void)recordError:(NSError *)error;
-
 @end
 
 @interface SNBRecordVoiceTools : NSObject
 {
-@public
     //音频输入队列
     AudioQueueRef				_audioQueue;
     //音频输入数据format
