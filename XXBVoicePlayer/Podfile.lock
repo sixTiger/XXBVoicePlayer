@@ -1,0 +1,19 @@
+PODS:
+  - XXBLibs (1.0.0)
+
+DEPENDENCIES:
+  - XXBLibs (from `https://github.com/sixTiger/XXBLibs`)
+
+EXTERNAL SOURCES:
+  XXBLibs:
+    :git: https://github.com/sixTiger/XXBLibs
+
+CHECKOUT OPTIONS:
+  XXBLibs:
+    :commit: 283717e09c8b7744fa478faa541d454c896f6d2a
+    :git: https://github.com/sixTiger/XXBLibs
+
+SPEC CHECKSUMS:
+  XXBLibs: 6f894394d94e7678f68b8432671d23bbf85bdc30
+
+COCOAPODS: 0.38.2

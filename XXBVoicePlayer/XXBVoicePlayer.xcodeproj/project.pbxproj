@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		624E8F9B1BFEB45100199882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624E8F991BFEB45100199882 /* Main.storyboard */; };
+		624E8F9D1BFEB45100199882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 624E8F9C1BFEB45100199882 /* Assets.xcassets */; };
+		624E8FA01BFEB45100199882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624E8F9E1BFEB45100199882 /* LaunchScreen.storyboard */; };
+		624E8FB21BFF02B300199882 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FAE1BFF02B300199882 /* AppDelegate.m */; };
+		624E8FB31BFF02B300199882 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FAF1BFF02B300199882 /* main.m */; };
+		624E8FB61BFF034000199882 /* XXBRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FB51BFF034000199882 /* XXBRecordViewController.m */; };
+		624E8FBA1BFF037700199882 /* XXBRecordVoiceTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FB91BFF037700199882 /* XXBRecordVoiceTools.m */; };
+		624E8FBC1BFF07A400199882 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 624E8FBB1BFF07A400199882 /* AVFoundation.framework */; };
+		624E8FBF1BFF2D8100199882 /* XXBVoicePlayerTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FBE1BFF2D8100199882 /* XXBVoicePlayerTools.m */; };
+		626987811C0F088500EE7F20 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626987801C0F088500EE7F20 /* lame.framework */; };
+		62E951AD1C101D90005181B2 /* SNBRecordVoiceTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E951AC1C101D90005181B2 /* SNBRecordVoiceTools.m */; };
+		62E951B31C101E64005181B2 /* SNBRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E951B21C101E64005181B2 /* SNBRecordViewController.m */; };
+		62E951C41C104910005181B2 /* SNBMp3RecordWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E951C31C104910005181B2 /* SNBMp3RecordWriter.m */; };
+		88A00162D58E24E9EAEC396E /* libPods-XXBVoicePlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B326F69DB96C5D60B561AE49 /* libPods-XXBVoicePlayer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C6B0FDD5DA11F85C8F6F379 /* Pods-XXBVoicePlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXBVoicePlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXBVoicePlayer/Pods-XXBVoicePlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		624E8F8D1BFEB45100199882 /* XXBVoicePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXBVoicePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		624E8F9A1BFEB45100199882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		624E8F9C1BFEB45100199882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		624E8F9F1BFEB45100199882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		624E8FA11BFEB45100199882 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		624E8FAD1BFF02B300199882 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		624E8FAE1BFF02B300199882 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		624E8FAF1BFF02B300199882 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		624E8FB41BFF034000199882 /* XXBRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBRecordViewController.h; sourceTree = "<group>"; };
+		624E8FB51BFF034000199882 /* XXBRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBRecordViewController.m; sourceTree = "<group>"; };
+		624E8FB81BFF037700199882 /* XXBRecordVoiceTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBRecordVoiceTools.h; sourceTree = "<group>"; };
+		624E8FB91BFF037700199882 /* XXBRecordVoiceTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBRecordVoiceTools.m; sourceTree = "<group>"; };
+		624E8FBB1BFF07A400199882 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		624E8FBD1BFF2D8100199882 /* XXBVoicePlayerTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBVoicePlayerTools.h; sourceTree = "<group>"; };
+		624E8FBE1BFF2D8100199882 /* XXBVoicePlayerTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBVoicePlayerTools.m; sourceTree = "<group>"; };
+		626987801C0F088500EE7F20 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
+		62E951AB1C101D90005181B2 /* SNBRecordVoiceTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBRecordVoiceTools.h; sourceTree = "<group>"; };
+		62E951AC1C101D90005181B2 /* SNBRecordVoiceTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBRecordVoiceTools.m; sourceTree = "<group>"; };
+		62E951B11C101E64005181B2 /* SNBRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBRecordViewController.h; sourceTree = "<group>"; };
+		62E951B21C101E64005181B2 /* SNBRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBRecordViewController.m; sourceTree = "<group>"; };
+		62E951C21C104910005181B2 /* SNBMp3RecordWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBMp3RecordWriter.h; sourceTree = "<group>"; };
+		62E951C31C104910005181B2 /* SNBMp3RecordWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBMp3RecordWriter.m; sourceTree = "<group>"; };
+		A25C2D9C0510D19142F9EC38 /* Pods-XXBVoicePlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXBVoicePlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-XXBVoicePlayer/Pods-XXBVoicePlayer.release.xcconfig"; sourceTree = "<group>"; };
+		B326F69DB96C5D60B561AE49 /* libPods-XXBVoicePlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XXBVoicePlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		624E8F8A1BFEB45100199882 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624E8FBC1BFF07A400199882 /* AVFoundation.framework in Frameworks */,
+				626987811C0F088500EE7F20 /* lame.framework in Frameworks */,
+				88A00162D58E24E9EAEC396E /* libPods-XXBVoicePlayer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		301B4ED97C64DA59094FE850 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				624E8FBB1BFF07A400199882 /* AVFoundation.framework */,
+				B326F69DB96C5D60B561AE49 /* libPods-XXBVoicePlayer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		620031A31C0C3B53006B72D9 /* Lame */ = {
+			isa = PBXGroup;
+			children = (
+				626987801C0F088500EE7F20 /* lame.framework */,
+			);
+			path = Lame;
+			sourceTree = "<group>";
+		};
+		624E8F841BFEB45100199882 = {
+			isa = PBXGroup;
+			children = (
+				624E8F8F1BFEB45100199882 /* XXBVoicePlayer */,
+				624E8F8E1BFEB45100199882 /* Products */,
+				950D0250105B257A319C5357 /* Pods */,
+				301B4ED97C64DA59094FE850 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		624E8F8E1BFEB45100199882 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				624E8F8D1BFEB45100199882 /* XXBVoicePlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		624E8F8F1BFEB45100199882 /* XXBVoicePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				624E8FA71BFF02B300199882 /* Class */,
+				624E8F991BFEB45100199882 /* Main.storyboard */,
+				624E8F9C1BFEB45100199882 /* Assets.xcassets */,
+				624E8F9E1BFEB45100199882 /* LaunchScreen.storyboard */,
+				624E8FA11BFEB45100199882 /* Info.plist */,
+				624E8F901BFEB45100199882 /* Supporting Files */,
+			);
+			path = XXBVoicePlayer;
+			sourceTree = "<group>";
+		};
+		624E8F901BFEB45100199882 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		624E8FA71BFF02B300199882 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				620031A31C0C3B53006B72D9 /* Lame */,
+				624E8FB71BFF035A00199882 /* Tools */,
+				624E8FA81BFF02B300199882 /* Controller */,
+				624E8FAB1BFF02B300199882 /* Model */,
+				624E8FAC1BFF02B300199882 /* Others */,
+				624E8FB01BFF02B300199882 /* View */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		624E8FA81BFF02B300199882 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				624E8FB41BFF034000199882 /* XXBRecordViewController.h */,
+				624E8FB51BFF034000199882 /* XXBRecordViewController.m */,
+				62E951B11C101E64005181B2 /* SNBRecordViewController.h */,
+				62E951B21C101E64005181B2 /* SNBRecordViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		624E8FAB1BFF02B300199882 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		624E8FAC1BFF02B300199882 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				624E8FAD1BFF02B300199882 /* AppDelegate.h */,
+				624E8FAE1BFF02B300199882 /* AppDelegate.m */,
+				624E8FAF1BFF02B300199882 /* main.m */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		624E8FB01BFF02B300199882 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		624E8FB71BFF035A00199882 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				624E8FB81BFF037700199882 /* XXBRecordVoiceTools.h */,
+				624E8FB91BFF037700199882 /* XXBRecordVoiceTools.m */,
+				624E8FBD1BFF2D8100199882 /* XXBVoicePlayerTools.h */,
+				624E8FBE1BFF2D8100199882 /* XXBVoicePlayerTools.m */,
+				62E951AB1C101D90005181B2 /* SNBRecordVoiceTools.h */,
+				62E951AC1C101D90005181B2 /* SNBRecordVoiceTools.m */,
+				62E951C21C104910005181B2 /* SNBMp3RecordWriter.h */,
+				62E951C31C104910005181B2 /* SNBMp3RecordWriter.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		950D0250105B257A319C5357 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C6B0FDD5DA11F85C8F6F379 /* Pods-XXBVoicePlayer.debug.xcconfig */,
+				A25C2D9C0510D19142F9EC38 /* Pods-XXBVoicePlayer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		624E8F8C1BFEB45100199882 /* XXBVoicePlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 624E8FA41BFEB45100199882 /* Build configuration list for PBXNativeTarget "XXBVoicePlayer" */;
+			buildPhases = (
+				9190FEE54EC1A0D7C9D70C42 /* Check Pods Manifest.lock */,
+				624E8F891BFEB45100199882 /* Sources */,
+				624E8F8A1BFEB45100199882 /* Frameworks */,
+				624E8F8B1BFEB45100199882 /* Resources */,
+				226DA7ED8E0BEB15A2F63BCE /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XXBVoicePlayer;
+			productName = XXBVoicePlayer;
+			productReference = 624E8F8D1BFEB45100199882 /* XXBVoicePlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		624E8F851BFEB45100199882 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = xiaobing;
+				TargetAttributes = {
+					624E8F8C1BFEB45100199882 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 624E8F881BFEB45100199882 /* Build configuration list for PBXProject "XXBVoicePlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 624E8F841BFEB45100199882;
+			productRefGroup = 624E8F8E1BFEB45100199882 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				624E8F8C1BFEB45100199882 /* XXBVoicePlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		624E8F8B1BFEB45100199882 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624E8FA01BFEB45100199882 /* LaunchScreen.storyboard in Resources */,
+				624E8F9D1BFEB45100199882 /* Assets.xcassets in Resources */,
+				624E8F9B1BFEB45100199882 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		226DA7ED8E0BEB15A2F63BCE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XXBVoicePlayer/Pods-XXBVoicePlayer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9190FEE54EC1A0D7C9D70C42 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		624E8F891BFEB45100199882 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624E8FBF1BFF2D8100199882 /* XXBVoicePlayerTools.m in Sources */,
+				62E951C41C104910005181B2 /* SNBMp3RecordWriter.m in Sources */,
+				62E951AD1C101D90005181B2 /* SNBRecordVoiceTools.m in Sources */,
+				624E8FB61BFF034000199882 /* XXBRecordViewController.m in Sources */,
+				624E8FB21BFF02B300199882 /* AppDelegate.m in Sources */,
+				62E951B31C101E64005181B2 /* SNBRecordViewController.m in Sources */,
+				624E8FB31BFF02B300199882 /* main.m in Sources */,
+				624E8FBA1BFF037700199882 /* XXBRecordVoiceTools.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		624E8F991BFEB45100199882 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				624E8F9A1BFEB45100199882 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		624E8F9E1BFEB45100199882 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				624E8F9F1BFEB45100199882 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		624E8FA21BFEB45100199882 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		624E8FA31BFEB45100199882 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		624E8FA51BFEB45100199882 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C6B0FDD5DA11F85C8F6F379 /* Pods-XXBVoicePlayer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XXBVoicePlayer/Class/Lame",
+				);
+				INFOPLIST_FILE = XXBVoicePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XXBVoicePlayer/Class/Lame",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaoxiaobing.XXBVoicePlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		624E8FA61BFEB45100199882 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A25C2D9C0510D19142F9EC38 /* Pods-XXBVoicePlayer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XXBVoicePlayer/Class/Lame",
+				);
+				INFOPLIST_FILE = XXBVoicePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XXBVoicePlayer/Class/Lame",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaoxiaobing.XXBVoicePlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		624E8F881BFEB45100199882 /* Build configuration list for PBXProject "XXBVoicePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				624E8FA21BFEB45100199882 /* Debug */,
+				624E8FA31BFEB45100199882 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		624E8FA41BFEB45100199882 /* Build configuration list for PBXNativeTarget "XXBVoicePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				624E8FA51BFEB45100199882 /* Debug */,
+				624E8FA61BFEB45100199882 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 624E8F851BFEB45100199882 /* Project object */;
+}
