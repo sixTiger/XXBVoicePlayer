@@ -197,7 +197,7 @@
                                 <rect key="frame" x="40" y="284" width="520" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dav-cY-ueW">
@@ -220,7 +220,7 @@
                                 <rect key="frame" x="50" y="325" width="500" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -251,6 +251,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yaN-kg-yYR"/>
+                    <connections>
+                        <outlet property="message1" destination="hjM-bg-nJ0" id="BOn-wQ-13B"/>
+                        <outlet property="message2" destination="pJU-th-qu3" id="5It-j1-SVF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aor-bd-tkb" sceneMemberID="firstResponder"/>
             </objects>

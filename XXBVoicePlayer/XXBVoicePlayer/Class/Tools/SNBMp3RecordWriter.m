@@ -56,8 +56,9 @@
     {
         if (self.recordedSecondCount+recoder.bufferDurationSeconds>self.maxSecondCount)
         {
-            //            DLOG(@"录音超时");
+            //
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 [recoder stopRecordVoice];
             });
             return YES;
@@ -86,7 +87,7 @@
         {
             if(self.recordedFileSize + recvLen > self.maxFileSize)
             {
-                //                    DLOG(@"录音文件过大");
+                NSLog(@"录音文件过大");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [recoder stopRecordVoice];
                 });
@@ -106,7 +107,6 @@
 
 - (BOOL)completeWriteWithRecorder:(SNBRecordVoiceTools*)recoder withIsError:(BOOL)isError
 {
-    //关闭就关闭吧。管他关闭成功与否
     if(_file){
         fclose(_file);
         _file = 0;

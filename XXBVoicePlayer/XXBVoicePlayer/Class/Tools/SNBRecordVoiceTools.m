@@ -53,6 +53,12 @@ return; \
 @property(nonatomic , strong) NSTimer               *backTimer;
 @property (nonatomic, assign) NSUInteger            channelCount;
 @property(nonatomic , assign) CGFloat               voiceLength;
+
+
+/**
+ *  开始时间
+ */
+@property(nonatomic , strong) NSDate                *startDate;
 @end
 @implementation SNBRecordVoiceTools
 - (instancetype)init
@@ -79,6 +85,7 @@ return; \
 
 - (void)startRecordVoice
 {
+    self.startDate = [NSDate date];
     NSAssert(!self.isRecording, @"录音必须先停止上一个才可开始新的");
     NSError *error = nil;
     //设置audio session的category
@@ -172,6 +179,8 @@ return; \
 
 - (void)stopRecordVoice
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Time %fs", [[NSDate date] timeIntervalSinceDate:self.startDate]] message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"ok", nil];
+    [alert show];
     [self p_stopTimer];
     if (self.isRecording)
     {

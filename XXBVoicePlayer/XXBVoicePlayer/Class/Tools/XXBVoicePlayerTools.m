@@ -30,9 +30,13 @@ XXBSingletonM(XXBVoicePlayerTools);
 }
 - (void)playVoiceWithParth:(NSString *)path
 {
-    [self stopPlayVoice];
     _audioPlayer = nil;
     self.path = path;
+    if (_audioPlayer)
+    {
+        [self.audioPlayer stop];
+        _audioPlayer = nil;
+    }
     [self.audioPlayer play];
 }
 
@@ -69,8 +73,8 @@ XXBSingletonM(XXBVoicePlayerTools);
 {
     if (_audioPlayer == nil)
     {
-        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.path];
-        NSURL *url = [NSURL fileURLWithPath:path];
+//        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:self.path];
+        NSURL *url = [NSURL fileURLWithPath:self.path];
         _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
         _audioPlayer.delegate = self;
         [_audioPlayer prepareToPlay];

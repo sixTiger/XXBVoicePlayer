@@ -10,10 +10,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   XXBLibs:
-    :commit: 283717e09c8b7744fa478faa541d454c896f6d2a
+    :commit: 6ace2333a6188d5141f9dda326a0ddc4d9e564b0
     :git: https://github.com/sixTiger/XXBLibs
 
 SPEC CHECKSUMS:
   XXBLibs: 6f894394d94e7678f68b8432671d23bbf85bdc30
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

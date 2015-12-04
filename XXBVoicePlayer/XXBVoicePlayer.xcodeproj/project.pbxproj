@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622DDA391C1178CC00CA30D5 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 622DDA381C1178CC00CA30D5 /* lame.framework */; };
 		624E8F9B1BFEB45100199882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624E8F991BFEB45100199882 /* Main.storyboard */; };
 		624E8F9D1BFEB45100199882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 624E8F9C1BFEB45100199882 /* Assets.xcassets */; };
 		624E8FA01BFEB45100199882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624E8F9E1BFEB45100199882 /* LaunchScreen.storyboard */; };
@@ -16,7 +17,6 @@
 		624E8FBA1BFF037700199882 /* XXBRecordVoiceTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FB91BFF037700199882 /* XXBRecordVoiceTools.m */; };
 		624E8FBC1BFF07A400199882 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 624E8FBB1BFF07A400199882 /* AVFoundation.framework */; };
 		624E8FBF1BFF2D8100199882 /* XXBVoicePlayerTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 624E8FBE1BFF2D8100199882 /* XXBVoicePlayerTools.m */; };
-		626987811C0F088500EE7F20 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626987801C0F088500EE7F20 /* lame.framework */; };
 		62E951AD1C101D90005181B2 /* SNBRecordVoiceTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E951AC1C101D90005181B2 /* SNBRecordVoiceTools.m */; };
 		62E951B31C101E64005181B2 /* SNBRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E951B21C101E64005181B2 /* SNBRecordViewController.m */; };
 		62E951C41C104910005181B2 /* SNBMp3RecordWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E951C31C104910005181B2 /* SNBMp3RecordWriter.m */; };
@@ -25,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1C6B0FDD5DA11F85C8F6F379 /* Pods-XXBVoicePlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XXBVoicePlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XXBVoicePlayer/Pods-XXBVoicePlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		622DDA381C1178CC00CA30D5 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
 		624E8F8D1BFEB45100199882 /* XXBVoicePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XXBVoicePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		624E8F9A1BFEB45100199882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		624E8F9C1BFEB45100199882 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		624E8FBB1BFF07A400199882 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		624E8FBD1BFF2D8100199882 /* XXBVoicePlayerTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBVoicePlayerTools.h; sourceTree = "<group>"; };
 		624E8FBE1BFF2D8100199882 /* XXBVoicePlayerTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBVoicePlayerTools.m; sourceTree = "<group>"; };
-		626987801C0F088500EE7F20 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
 		62E951AB1C101D90005181B2 /* SNBRecordVoiceTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBRecordVoiceTools.h; sourceTree = "<group>"; };
 		62E951AC1C101D90005181B2 /* SNBRecordVoiceTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBRecordVoiceTools.m; sourceTree = "<group>"; };
 		62E951B11C101E64005181B2 /* SNBRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBRecordViewController.h; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				624E8FBC1BFF07A400199882 /* AVFoundation.framework in Frameworks */,
-				626987811C0F088500EE7F20 /* lame.framework in Frameworks */,
+				622DDA391C1178CC00CA30D5 /* lame.framework in Frameworks */,
 				88A00162D58E24E9EAEC396E /* libPods-XXBVoicePlayer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,10 +74,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		620031A31C0C3B53006B72D9 /* Lame */ = {
+		622DDA301C11672700CA30D5 /* Lame */ = {
 			isa = PBXGroup;
 			children = (
-				626987801C0F088500EE7F20 /* lame.framework */,
+				622DDA381C1178CC00CA30D5 /* lame.framework */,
 			);
 			path = Lame;
 			sourceTree = "<group>";
@@ -123,7 +123,7 @@
 		624E8FA71BFF02B300199882 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				620031A31C0C3B53006B72D9 /* Lame */,
+				622DDA301C11672700CA30D5 /* Lame */,
 				624E8FB71BFF035A00199882 /* Tools */,
 				624E8FA81BFF02B300199882 /* Controller */,
 				624E8FAB1BFF02B300199882 /* Model */,
@@ -204,6 +204,7 @@
 				624E8F8A1BFEB45100199882 /* Frameworks */,
 				624E8F8B1BFEB45100199882 /* Resources */,
 				226DA7ED8E0BEB15A2F63BCE /* Copy Pods Resources */,
+				FDF18A518AD5A684B3BC6778 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,6 +289,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FDF18A518AD5A684B3BC6778 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XXBVoicePlayer/Pods-XXBVoicePlayer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

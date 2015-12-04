@@ -12,10 +12,13 @@
 #import <AVFoundation/AVFoundation.h>
 #import "XXBVoicePlayerTools.h"
 
-@interface SNBRecordViewController ()
-@property (nonatomic, strong) SNBMp3RecordWriter *mp3Writer;
-@property (nonatomic, copy) NSString *filePath;
-@property (nonatomic, strong) SNBRecordVoiceTools *recorder;
+@interface SNBRecordViewController ()<SNBRecordVoiceToolsDelegate>
+@property (nonatomic, strong) SNBMp3RecordWriter        *mp3Writer;
+@property (nonatomic, copy) NSString                    *filePath;
+@property (nonatomic, strong) SNBRecordVoiceTools       *recorder;
+@property (weak, nonatomic) IBOutlet UILabel            *message1;
+@property (weak, nonatomic) IBOutlet UILabel            *message2;
+@property(nonatomic , assign) int                       count;
 @end
 
 @implementation SNBRecordViewController
@@ -23,17 +26,14 @@
 {
     // Do any additional setup after loading the view, typically from a nib.
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-    SNBMp3RecordWriter *mp3Writer = [[SNBMp3RecordWriter alloc]init];
-    mp3Writer.filePath = [path stringByAppendingPathComponent:@"record.mp3"];
-    mp3Writer.maxSecondCount = 60;
-    mp3Writer.maxFileSize = 1024*256;
-    self.mp3Writer = mp3Writer;
-    SNBRecordVoiceTools *recorder = [[SNBRecordVoiceTools alloc]init];
-
-    recorder.fileWriterDelegate = mp3Writer;
-    self.filePath = mp3Writer.filePath;
-    self.recorder = recorder;
+    if (self.count <= 0)
+    {
+        self.count = 0;
+    }
+    self.count ++;
+    NSString *fileName = [NSString stringWithFormat:@"%02d.mp3",self.count];
+    self.filePath = [path stringByAppendingPathComponent:fileName];
+    self.mp3Writer.filePath = self.filePath;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionDidChangeInterruptionType:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
     
     [self.recorder startRecordVoice];
@@ -52,6 +52,14 @@
         NSLog(@"end");
     }
 }
+- (void)recordVoiceTools:(SNBRecordVoiceTools *)recordVoiceTools voiceLengthDidChange:(CGFloat)voiceLength
+{
+    self.message2.text = [NSString stringWithFormat:@"%@",@(voiceLength)];
+}
+- (void)recordVoiceTools:(SNBRecordVoiceTools *)recordVoiceTools voicePowerDidChange:(CGFloat)voicePower
+{
+    self.message1.text = [NSString stringWithFormat:@"%.2f",voicePower];
+}
 - (IBAction)stopRecord:(id)sender
 {
     //取消录音
@@ -67,7 +75,32 @@
 }
 - (IBAction)playVoice:(id)sender
 {
-    [[XXBVoicePlayerTools sharedXXBVoicePlayerTools] playVoiceWithParth:@"record.mp3"];
+    [[XXBVoicePlayerTools sharedXXBVoicePlayerTools] playVoiceWithParth:self.filePath];
 }
-
+- (SNBRecordVoiceTools *)recorder
+{
+    if (_recorder == nil)
+    {
+        SNBRecordVoiceTools *recorder = [[SNBRecordVoiceTools alloc]init];
+        recorder.delegate = self;
+        recorder.fileWriterDelegate = self.mp3Writer;
+        _recorder = recorder;
+    }
+    return _recorder;
+}
+- (SNBMp3RecordWriter *)mp3Writer
+{
+    if (_mp3Writer == nil)
+    {
+        SNBMp3RecordWriter *mp3Writer = [[SNBMp3RecordWriter alloc]init];
+        mp3Writer.maxSecondCount = 60;
+        /**
+         *  录音文件的大小是 10M
+         */
+        mp3Writer.maxFileSize = 1024 * 1024 * 10;
+        self.mp3Writer = mp3Writer;
+        _mp3Writer = mp3Writer;
+    }
+    return _mp3Writer;
+}
 @end
